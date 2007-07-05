@@ -1,7 +1,7 @@
 Summary: Ibod - ISDN MPPP bandwidth on demand daemon
 Name: ibod
-Version: 1.4
-Release: %mkrel 5
+Version: 1.5.0
+Release: %mkrel 1
 Source0: http://www.compound.se/download/%{name}-%{version}-src.tar.bz2
 Source1: ibod.init
 Patch0: ibod.cf.patch
@@ -21,8 +21,8 @@ according to the MPPP protocol. When the traffic decreases below
 one channel capacity, the slave channel is disconnected.
 
 %prep
-%setup -q -c -n ibod
-%patch0 -p0
+%setup -q
+#%patch0 -p0
 
 %build
 %make
