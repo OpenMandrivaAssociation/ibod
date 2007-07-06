@@ -1,7 +1,7 @@
 Summary: Ibod - ISDN MPPP bandwidth on demand daemon
 Name: ibod
 Version: 1.5.0
-Release: %mkrel 1
+Release: %mkrel 2
 Source0: http://www.compound.se/download/%{name}-%{version}-src.tar.bz2
 Source1: ibod.init
 Patch0: ibod.cf.patch
@@ -45,11 +45,10 @@ ln -s /etc/rc.d/init.d/ibod $RPM_BUILD_ROOT/usr/sbin/rcibod
 rm -rf $RPM_BUILD_ROOT
 
 %post
-chkconfig --add ibod
+%_post_service ibod
 
 %preun
-[ -f /var/lock/subsys/ibod  ] && /etc/rc.d/init.d/ibod stop
-/sbin/chkconfig --del ibod
+%_preun_service ibod
 
 %files
 %defattr(-,root,root)
