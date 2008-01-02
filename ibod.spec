@@ -8,6 +8,7 @@ Patch0: ibod.cf.patch
 URL: http://www.compound.se/ibod.html
 License: GPL
 Group: Networking/Other
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description 
 ibod is a ISDN MPPP bandwidth on demand daemon designed to operate
