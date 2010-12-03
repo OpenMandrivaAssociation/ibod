@@ -1,7 +1,7 @@
 Summary: Ibod - ISDN MPPP bandwidth on demand daemon
 Name: ibod
 Version: 1.5.0
-Release: %mkrel 8
+Release: %mkrel 9
 Source0: http://www.compound.se/download/%{name}-%{version}-src.tar.bz2
 Source1: ibod.init
 Patch0: ibod.cf.patch
