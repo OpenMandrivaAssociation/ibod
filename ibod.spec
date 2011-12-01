@@ -29,20 +29,20 @@ one channel capacity, the slave channel is disconnected.
 
 %install
 rm -rf %{buildroot}
-mkdir -p $RPM_BUILD_ROOT/%{_sysconfdir}/ppp
-mkdir -p $RPM_BUILD_ROOT/%{_initrddir}
-mkdir -p $RPM_BUILD_ROOT/%{_mandir}/man1
-mkdir -p $RPM_BUILD_ROOT/%{_mandir}/man4
-mkdir -p $RPM_BUILD_ROOT/%{_sbindir}
-install -m755 ibod $RPM_BUILD_ROOT/%{_sbindir}
-install -m644 ibod.1 $RPM_BUILD_ROOT/%{_mandir}/man1/
-install -m644 ibod.cf.4 $RPM_BUILD_ROOT/%{_mandir}/man4/
-install -m644 ibod.cf $RPM_BUILD_ROOT/%{_sysconfdir}/ppp/
-install -m755 %{SOURCE1} $RPM_BUILD_ROOT/%{_initrddir}/ibod
-ln -s /etc/rc.d/init.d/ibod $RPM_BUILD_ROOT/usr/sbin/rcibod
+mkdir -p %{buildroot}/%{_sysconfdir}/ppp
+mkdir -p %{buildroot}/%{_initrddir}
+mkdir -p %{buildroot}/%{_mandir}/man1
+mkdir -p %{buildroot}/%{_mandir}/man4
+mkdir -p %{buildroot}/%{_sbindir}
+install -m755 ibod %{buildroot}/%{_sbindir}
+install -m644 ibod.1 %{buildroot}/%{_mandir}/man1/
+install -m644 ibod.cf.4 %{buildroot}/%{_mandir}/man4/
+install -m644 ibod.cf %{buildroot}/%{_sysconfdir}/ppp/
+install -m755 %{SOURCE1} %{buildroot}/%{_initrddir}/ibod
+ln -s /etc/rc.d/init.d/ibod %{buildroot}/usr/sbin/rcibod
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %post
 %_post_service ibod
