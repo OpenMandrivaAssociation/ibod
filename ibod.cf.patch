@@ -1,0 +1,25 @@
+--- ibod.cf	Fri Jun  5 01:33:52 1998
++++ ibod.cf.new	Fri Oct 22 15:17:01 1999
+@@ -25,13 +25,13 @@
+ #
+ # DEVICE	<name>	Name of ISDN PPP device.
+ #			Default is ippp0.
+-#
++DEVICE ippp0
+ # ENABLE	1|0	Enable/disable bandwidth-on-demand.
+ #			Default is enable (1).
+-#
++ENABLE 1
+ # INTERVAL	<n>	Specify the sample time interval in ms.
+ #			Default is 500 ms.
+-#
++INTERVAL 500
+ # FILTER	<n>	Defines "filtering factor". A value of 10 means
+ #			that the average bytes/sec value measured over 10
+ #			intervals must pass the limit defined by LIMIT
+@@ -56,5 +56,3 @@
+ #			channel will unconditionally stay up after it has
+ #			been brought up. Default value is 30.
+ #
+-INTERVAL	500
+-FILTER	10
