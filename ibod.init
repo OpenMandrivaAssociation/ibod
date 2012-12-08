@@ -1,0 +1,53 @@
+#! /bin/sh
+#
+# ibod
+#
+# chkconfig: 345 50 50
+# description: ISDN MPPP bandwidth on demand daemon 
+#
+# config: /etc/ppp/ibod.cf
+
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+# Check for configuration
+[ -f /etc/ppp/ibod.cf ] || exit 0 
+
+[ -f /usr/sbin/ibod ] || exit 0
+
+# See how we were called.
+case "$1" in
+  start)
+	echo -n "Starting ibod-daemon: "
+	/usr/sbin/ibod &
+	success "start"
+	echo
+	touch /var/lock/subsys/ibod
+	;;
+  stop)
+	# bringing down NFS filesystems isn't inet's problem I don't know 
+	# why this script used to do that -- ewt
+
+	echo -n "Stopping ibod-daemon: "
+	killproc ibod
+
+	echo
+	rm -f /var/lock/subsys/ibod
+	;;
+  status)
+	status ibod
+	;;
+  reload)
+	killall -HUP ibod
+	;;
+  restart)
+        $0 stop
+	$0 start
+	;;
+  *)
+	echo "Usage: $(basename $0) {start|stop|status|restart|reload}"
+	exit 1
+esac
+
+exit 0
