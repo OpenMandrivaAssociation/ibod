@@ -1,14 +1,13 @@
-Summary: - ISDN MPPP bandwidth on demand daemon
+Summary: ISDN MPPP bandwidth on demand daemon
 Name: ibod
 Version: 1.5.0
-Release: %mkrel 12
+Release: 13
 Source0: http://www.compound.se/download/%{name}-%{version}-src.tar.bz2
 Source1: ibod.init
 Patch0: ibod.cf.patch
 URL: http://www.compound.se/ibod.html
 License: GPL
 Group: Networking/Other
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description 
 ibod is a ISDN MPPP bandwidth on demand daemon designed to operate
@@ -28,21 +27,19 @@ one channel capacity, the slave channel is disconnected.
 %make
 
 %install
-rm -rf %{buildroot}
-mkdir -p $RPM_BUILD_ROOT/%{_sysconfdir}/ppp
-mkdir -p $RPM_BUILD_ROOT/%{_initrddir}
-mkdir -p $RPM_BUILD_ROOT/%{_mandir}/man1
-mkdir -p $RPM_BUILD_ROOT/%{_mandir}/man4
-mkdir -p $RPM_BUILD_ROOT/%{_sbindir}
-install -m755 ibod $RPM_BUILD_ROOT/%{_sbindir}
-install -m644 ibod.1 $RPM_BUILD_ROOT/%{_mandir}/man1/
-install -m644 ibod.cf.4 $RPM_BUILD_ROOT/%{_mandir}/man4/
-install -m644 ibod.cf $RPM_BUILD_ROOT/%{_sysconfdir}/ppp/
-install -m755 %{SOURCE1} $RPM_BUILD_ROOT/%{_initrddir}/ibod
-ln -s /etc/rc.d/init.d/ibod $RPM_BUILD_ROOT/usr/sbin/rcibod
+mkdir -p %{buildroot}/%{_sysconfdir}/ppp
+mkdir -p %{buildroot}/%{_initrddir}
+mkdir -p %{buildroot}/%{_mandir}/man1
+mkdir -p %{buildroot}/%{_mandir}/man4
+mkdir -p %{buildroot}/%{_sbindir}
+install -m755 ibod %{buildroot}/%{_sbindir}
+install -m644 ibod.1 %{buildroot}/%{_mandir}/man1/
+install -m644 ibod.cf.4 %{buildroot}/%{_mandir}/man4/
+install -m644 ibod.cf %{buildroot}/%{_sysconfdir}/ppp/
+install -m755 %{SOURCE1} %{buildroot}/%{_initrddir}/ibod
+ln -s /etc/rc.d/init.d/ibod %{buildroot}/usr/sbin/rcibod
 
 %clean
-rm -rf $RPM_BUILD_ROOT
 
 %post
 %_post_service ibod
@@ -51,7 +48,6 @@ rm -rf $RPM_BUILD_ROOT
 %_preun_service ibod
 
 %files
-%defattr(-,root,root)
 %{_sbindir}/*
 %{_mandir}/man1/ibod.1*
 %{_mandir}/man4/ibod.cf.4*
