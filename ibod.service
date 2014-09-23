@@ -1,0 +1,14 @@
+[Unit]
+Description=ISDN MPPP bandwidth on demand daemon 
+After=syslog.target network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/ibod
+Restart=on-abort
+SyslogIdentifier=ibod
+# Variable IBOD_HOME specifies the directory where to look for the configuration file ibod.cf
+EnvironmentFile=-sysconfig/ibod
+
+[Install]
+WantedBy=multi-user.target
