@@ -3,7 +3,7 @@ Description=ISDN MPPP bandwidth on demand daemon
 After=syslog.target network.target
 
 [Service]
-Type=simple
+Type=forking
 ExecStart=/usr/sbin/ibod
 Restart=on-abort
 SyslogIdentifier=ibod
