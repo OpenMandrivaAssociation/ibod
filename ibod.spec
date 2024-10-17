@@ -5,7 +5,7 @@ Release: 16
 Source0: http://www.compound.se/download/%{name}-%{version}-src.tar.bz2
 Source1: ibod.service
 Patch0: ibod.cf.patch
-URL: http://www.compound.se/ibod.html
+URL: https://www.compound.se/ibod.html
 License: GPL
 Group: Networking/Other
 
