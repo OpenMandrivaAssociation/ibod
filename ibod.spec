@@ -9,6 +9,7 @@ URL: https://www.compound.se/ibod.html
 License: GPL
 Group: Networking/Other
 
+BuildRequires:	make
 %description 
 ibod is a ISDN MPPP bandwidth on demand daemon designed to operate
 in conjunction with isdn4linux.
